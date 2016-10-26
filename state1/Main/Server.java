@@ -26,13 +26,13 @@ public static void main (String[] args) {
         NamingContext nameRoot=org.omg.CosNaming.NamingContextHelper.narrow(orb.resolve_initial_references("NameService"));
 
         org.omg.CosNaming.NameComponent[] nameToRegister = new org.omg.CosNaming.NameComponent[1];
-        System.out.println("Sous quel nom voulez-vous enregistrer l'objet Corba ?");
+        System.out.println("Sous quel nom voulez-vous vous enregistrer ?");
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         String nomObj = in.readLine();
         nameToRegister[0] = new org.omg.CosNaming.NameComponent(nomObj,"");
 
         nameRoot.rebind(nameToRegister,rootPOA.servant_to_reference(myMsg));
-        System.out.println("==> Nom '"+ nomObj + "' est enregistre dans le service de noms.");
+        System.out.println("'"+ nomObj + "' est maintenant enregistré.");
         
         orb.run();
 

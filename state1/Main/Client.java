@@ -12,7 +12,7 @@ public class Client {
 		try {
 			org.omg.CORBA.ORB orb = org.omg.CORBA.ORB.init(args,null);
 	
-	        System.out.println("Quel objet Corba voulez-vous contacter ?");
+	        System.out.println("Qui voulez-vous contacter ?");
 	        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 	        String idObj = in.readLine();
 	
@@ -27,9 +27,12 @@ public class Client {
 	        myMsg = Talk.Step1Helper.narrow(distantMessage);
 	        
 	        // Demander un messsage, un nom d'auteur et un dest
-	        
-	        Message m = new Message("Pomme","Auteur = Moi","Dst = nous");
-	        myMsg.printMsg(m);
+	        System.out.println("Tapez les messages que vous voulez entrer : ");
+	        Message m = new Message("","Moi",idObj);
+	        while (true) {
+	        	m.msg=in.readLine();
+		        myMsg.printMsg(m);
+	        }
 
 		}
 		catch (Exception e) {
