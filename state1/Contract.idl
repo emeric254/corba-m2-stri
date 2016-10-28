@@ -1,26 +1,27 @@
 /***************************
-* Contrat IDL de CorbaTalk *
+* IDL Contract CorbaTalk *
 ***************************/
 
 module Talk {
 
-	struct Message {
-		string msg;
-		string author;
-		string dst; /* Personne ou salon (pour le chat) */
-	};
 
-	exception genericError {string reason;};
+    struct Message {
+        string msg;
+        string author;
+        string dst; /* People or room name */
+    };
 
-	interface Step1 {
-		oneway void printMsg(in Message m);
-	};
+    exception genericError {string reason;};
 
-	/*
-	interface Chat {
-		void inscription(in Message m) raises (genericError);
-		oneway void diffusion(in Message m) raises (genericError);
-	};
-	*/
+    interface Step1 {
+        oneway void printMsg(in Message m);
+    };
+
+    /*
+    interface Chat {
+        void inscription(in Message m) raises (genericError);
+        oneway void diffusion(in Message m) raises (genericError);
+    };
+    */
 
 };

@@ -6,6 +6,6 @@ public class MessageImpl extends Talk.Step1POA
 {
     public void printMsg(Message m)
     {
-        System.out.println(m.author + " : " + m.msg);
+        System.out.println(m.author + " send : " + m.msg);
     }
 }
