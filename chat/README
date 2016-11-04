@@ -1,0 +1,13 @@
+# First Step
+
+One way communication from a client to a Server
+
+ ————————                  ————————
+|        |                |        |
+| Client |———C -----> O———| Server |
+|        |            |   |        |
+ ————————             |    ————————
+                      |
+                      v
+                     IDL:
+                         - Service printMsg
