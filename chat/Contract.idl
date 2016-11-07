@@ -23,5 +23,4 @@ module Talk {
         oneway void diffusion(in Message m) raises (genericError);
     };
     */
-
 };
