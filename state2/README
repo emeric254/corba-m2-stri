@@ -1,0 +1,18 @@
+# Second Step
+
+Tow way communication between two clients
+
+
+                       IDL:
+                        ^  - Service printMsg
+                        |
+                        |
+ ——————————             |    ——————————
+|          |———❨ -----> O———|          |
+| Client 1 |                | Client 2 |
+|          |———O <----- ❩———|          |
+ ——————————    |             ——————————
+               |
+               v
+              IDL:
+                  - Service printMsg
