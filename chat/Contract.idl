@@ -19,10 +19,8 @@ module Talk {
         oneway void printMsg(in Message m);
     };
 
-    /*
     interface Chat {
         void inscription(in Message m) raises (genericError);
-        oneway void diffusion(in Message m) raises (genericError);
+        oneway void diffusion(in Message m);
     };
-    */
 };
