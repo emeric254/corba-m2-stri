@@ -1,0 +1,57 @@
+module Registrar {
+    interface SiteWeb {
+		boolean achat(in string nom_domaine, in string infos_proprietaire, out string facture);
+    };
+    interface EspaceUtilisateur {
+        void liberer_nom_domaine(in string nom_domaine);
+        void assigner(in string nom_domaine, in string ip);
+        string changement_proprietaire(in string nom_domaine);
+        string changement_registrar(in string nom_domaine);
+        void renouveler(in string nom_domaine);
+        void retirer(in string nom_domaine, in string secret);
+    };
+};
+
+module TLD {
+    interface GestionDN {
+        void liberer_nom_domaine(in string nom_domaine);
+        void assigner(in string nom_domaine, in string ip);
+        void renouveler_bail(in string nom_domaine);
+        void changement_registrar(in string nom_domaine, in string secret);
+        boolean appropriation(in string nom_domaine, in string secret);
+        void mise_a_jour(in string nom_domaine, in string infos_proprietaire);
+        void reserver(in string nom_domaine, in string infos_proprietaire);
+		boolean verifier_dispo(in string nom_domaine);
+    };
+	
+	interface DemandesClient {
+        string requete_whois(in string nom_domaine);
+        string requete_dns(in string nom_domaine);
+	};
+};
+
+module DNS {
+    interface InfosDN {
+        string resoudre_whois(in string nom_domaine);
+        string resoudre_dns(in string nom_domaine);
+    };
+	interface ModificationDN {
+        void vider(in string nom_domaine);
+        void assigner(in string nom_domaine, in string ip);
+	};
+};
+
+module Banque {
+    struct compte {
+        string ref_compte;
+        float solde;
+    };
+	
+	exception OperationRefusee {string m;};
+
+    interface GestionCompte {
+        void effectuer_virement(in string ref_compte_debiteur, in string ref_compte_crediteur, in float solde) raises (OperationRefusee);
+        void demande_prelevement(in string ref_compte_crediteur, in float solde) raises (OperationRefusee);
+        float verifier_solde(in string ref_compte) raises (OperationRefusee);
+    };
+};
